@@ -1,21 +1,19 @@
-
-
-.splashScreen{
+.splashScreen {
   background-color: #6b8e23;
-  padding:5px;
+  padding: 5px;
 }
 
-.splashScreen button{
-  margin:auto;
-  display:block;
+.splashScreen button {
+  margin: auto;
+  display: block;
 }
 
-body{
-  font-size:16px;
-  line-height:1.5em;
+body {
+  font-size: 16px;
+  line-height: 1.5em;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #6b8e23;
-  padding:0;
+  padding: 0;
   background-image: url(https://portal.sd44.ca/VTS/App_Themes/ESCFormTheme/esc_background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,47 +27,41 @@ body{
   height: 50px;
 }
 
-
-header{
+header {
   position: -webkit-sticky;
-  position:sticky;
-  margin-left:auto;
-  margin-right:auto;
-  top:0px;
-
-
+  position: sticky;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0px;
 }
 
-h1{
+h1 {
   font-size: 20px;
-  text-align:center;
-  background-color:#E4E4E4;
+  text-align: center;
+  background-color: #e4e4e4;
 }
 
-
-
-img{
-  display:block;
+img {
+  display: block;
   margin: auto;
-  background-color:#E4E4E4;
-  padding:5px;
+  background-color: #e4e4e4;
+  padding: 5px;
 }
 
-form{
-  background-color: #F4F4F4;
-  padding:5px;
-  margin:20px;
-  border:1px solid #006400;
-
+form {
+  background-color: #f4f4f4;
+  padding: 5px;
+  margin: 20px;
+  border: 1px solid #006400;
 }
 
 a {
-  text-decoration:none;
-  color:#000;
+  text-decoration: none;
+  color: #000;
 }
 
-.red{
-  color:#F00;
+.red {
+  color: #f00;
 }
 
 .red-border {
@@ -78,25 +70,26 @@ a {
   border-width: medium;
 }
 
-
-
 #finalInput {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
-#Q2a, #Q2b, #Q2c, #Q2d {
-  background-color:#fee;
-  padding:5px;
-  border:2px solid #f00;
+#Q2a,
+#Q2b,
+#Q2c,
+#Q2d {
+  background-color: #fee;
+  padding: 5px;
+  border: 2px solid #f00;
 }
 
-@media (max-width:480px){
-  form{
-    border-top:1px solid #006400;
-    border-bottom:1px solid #006400;
-    border-right:none;
-    border-left:none;
-    margin-left:-8px;
-    margin-right:-8px;
+@media (max-width: 480px) {
+  form {
+    border-top: 1px solid #006400;
+    border-bottom: 1px solid #006400;
+    border-right: none;
+    border-left: none;
+    margin-left: -8px;
+    margin-right: -8px;
   }
 }

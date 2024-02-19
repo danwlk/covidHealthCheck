@@ -1,231 +1,417 @@
 <!DOCTYPE html>
 <html lang="en" />
 
-  <head>
+<head>
+  <title>Spectator/Guest Sign-in Form</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
 
-    <title>Spectator/Guest Sign-in Form</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+<body>
+  <br />
+  <img
+    src="https://www.sd44.ca/PublishingImages/NVSD_acronym_colour_PMS.png"
+    alt="NVSD logo"
+    width="100px"
+  />
 
-  </head>
+  <header><h1>NVSD Spectator/Guest Sign-in Form</h1></header>
 
+  <!--Splashscreen-->
+  <div id="buttonFirst" class="splashScreen">
+    <h1>Welcome!<span id="demo"></span></h1>
+    <button
+      type="button"
+      onclick="afterSplashScreen();"
+      style="width: 100px; height: 50px; font-size: 20px; cursor: pointer"
+    >
+      Begin
+    </button>
+  </div>
 
-  <body>
+  <!--The form-->
+  <form id="form" style="display: none">
+    <p><span class="red">*</span> = required</p>
+    <p id="symptomsParagraph">
+      Are you experiencing any of the following symptoms?
+      <span class="red">*</span>
+    </p>
 
+    <ol style="list-style-type: lower-roman">
+      <li>Fever &#40;above 38 degrees&#41;</li>
+      <li>Chills</li>
+      <li>Cough</li>
+      <li>Difficulty Breathing</li>
+      <li>Loss of sense of smell or taste</li>
+      <li>Sore Throat</li>
+      <li>Loss of Appetite</li>
+      <li>Headaches</li>
+      <li>Body Aches</li>
+      <li>Extreme fatigue or tiredness</li>
+      <li>Nausea or vomiting</li>
+      <li>Diarrhea</li>
+    </ol>
 
-    <br/>
-    <img src='https://www.sd44.ca/PublishingImages/NVSD_acronym_colour_PMS.png' alt='NVSD logo' width='100px' />
+    <input
+      style="cursor: pointer"
+      type="radio"
+      id="yes"
+      name="symptoms"
+      value="yes"
+      onclick="pleaseGoHome('goHome1');"
+      required
+    />
+    <label for="yes">Yes</label>
 
-    <header><h1>NVSD Spectator/Guest Sign-in Form </h1></header>
+    <input
+      style="cursor: pointer"
+      type="radio"
+      id="no"
+      name="symptoms"
+      value="no"
+      onclick="showQuestionsOne();"
+      required
+    />
+    <label for="no">No</label>
+    <br />
+    <br />
 
-    <!--Splashscreen-->
-      <div id='buttonFirst' class='splashScreen'>
-        <h1>Welcome!<span id='demo'></span></h1>
-        <button type="button" onclick= "afterSplashScreen();" style="width:100px; height:50px; font-size:20px; cursor:pointer">Begin</button>
+    <div id="outsideTravelDiv" style="display: none">
+      <p id="outsideTravelParagraph">
+        Have you returned from travel outside Canada in the last 14 days?
+        <span class="red">*</span>
+      </p>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="yes"
+        name="travel"
+        value="yes"
+        onclick="showQuestionsTwo();"
+        required
+      />
+      <label for="yes">Yes</label>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="no"
+        name="travel"
+        value="no"
+        onclick="showQuestionsThree();"
+        required
+      />
+      <label for="no">No</label>
+      <br />
+      <br />
+    </div>
+
+    <div id="fullyVaxxedDiv" style="display: none">
+      <p id="fullyVaccinatedParagraph">
+        Are you fully vaccinated? <span class="red">*</span>
+      </p>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="yes"
+        value="yes"
+        name="fullyVaccinated"
+        value="yes"
+        onclick="showQuestionsThree();"
+      />
+      <label for="yes">Yes</label>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="no"
+        name="fullyVaccinated"
+        value="no"
+        value="no"
+        onclick="pleaseGoHome('goHome2');"
+        required
+      />
+      <label for="no">No</label>
+      <br />
+      <br />
+    </div>
+
+    <div id="closeContactDiv" style="display: none">
+      <p id="closeContactParagraph">
+        Have you been notified by public health that you are a close contact of
+        a person confirmed to have COVID-19? <span class="red">*</span>
+      </p>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="yes"
+        name="closeContact"
+        value="yes"
+        onclick="pleaseGoHome('goHome3');"
+        required
+      />
+      <label for="yes">Yes</label>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="no"
+        name="closeContact"
+        value="no"
+        onclick="showQuestionsFour();"
+        required
+      />
+      <label for="no">No</label>
+      <br />
+      <br />
+    </div>
+
+    <div id="healthCheckDiv" style="display: none">
+      <p id="healthCheckParagraph">
+        Please confirm you have completed the Daily Health Check
+        <span class="red">*</span>
+      </p>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="yes"
+        name="healthCheck"
+        value="yes"
+        onclick="showQuestionsFive();"
+        required
+      />
+      <label for="yes">Yes</label>
+
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="no"
+        name="healthCheck"
+        value="no"
+        onclick="pleaseGoHome('goHome4');"
+        required
+      />
+      <label for="no">No</label>
+      <br />
+      <br />
+    </div>
+
+    <div id="miscQuestionsDiv" style="display: none">
+      <p id="visitParagraph">
+        Choose one of the following that describes your visit:
+        <span class="red">*</span>
+      </p>
+
+      <div id="miscQuestionsMandatory" style="display: none">
+        This Field Is Mandatory
       </div>
 
+      <input
+        style="cursor: pointer"
+        value="athleticEvent"
+        type="radio"
+        id="athletic"
+        name="visit"
+        required
+      />
+      <label for="athletic"
+        >Athletic Event (all players/coaches/officials/spectators)</label
+      >
+      <br />
 
-    <!--The form-->
-    <form id='form' style ="display:none">
-      <p><span class='red'>*</span> = required</p>
-      <p id = "symptomsParagraph">Are you experiencing any of the following symptoms?
-        <span class='red'>*</span></p>
+      <input
+        style="cursor: pointer"
+        type="radio"
+        value="musicDrama"
+        id="musicDrama"
+        name="visit"
+        required
+      />
+      <label for="musicDrama"
+        >Musical/Drama Performance (all performers/participants/audience)</label
+      >
+      <br />
 
+      <input
+        style="cursor: pointer"
+        type="radio"
+        value="schoolMeeting"
+        id="school"
+        name="visit"
+        required
+      />
+      <label for="school"
+        >School Meeting (e.g. parent evening, meeting, presentation,
+        etc.)</label
+      >
+      <br />
 
-      <ol style="list-style-type:lower-roman">
-        <li>Fever &#40;above 38 degrees&#41;</li>
-        <li>Chills</li>
-        <li>Cough</li>
-        <li>Difficulty Breathing</li>
-        <li>Loss of sense of smell or taste</li>
-        <li>Sore Throat</li>
-        <li>Loss of Appetite</li>
-        <li>Headaches</li>
-        <li>Body Aches</li>
-        <li>Extreme fatigue or tiredness</li>
-        <li>Nausea or vomiting</li>
-        <li>Diarrhea</li>
-      </ol>
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="otherVisit"
+        name="visit"
+        value="other"
+        required
+      />
 
+      <label for="otherVisit">
+        Other (please describe)
+        <input
+          type="text"
+          id="otherInputVisit"
+          placeholder="Describe Your Visit"
+          onClick="selectOther('otherVisit');"
+        />
+      </label>
+      <br />
+      <br />
 
-      <input style="cursor:pointer" type='radio' id='yes' name='symptoms'  value="yes"   onclick="pleaseGoHome('goHome1');" required/>
-      <label for='yes'>Yes</label>
+      <p id="locationParagraph">
+        Enter the location: <span class="red">*</span>
+      </p>
 
-      <input style="cursor:pointer" type='radio' id='no' name='symptoms' value="no" onclick="showQuestionsOne();" required/>
-      <label for='no'>No</label>
-      <br/>
-      <br/>
-
-
-      <div id="outsideTravelDiv"  style="display:none">
-
-        <p id ="outsideTravelParagraph">Have you returned from travel outside Canada in the last 14 days? <span class='red'>*</span></p>
-
-        <input style="cursor:pointer" type='radio' id='yes' name='travel' value="yes" onclick="showQuestionsTwo();" required/>
-        <label for='yes'>Yes</label>
-
-        <input style="cursor:pointer" type='radio' id='no' name='travel' value="no" onclick="showQuestionsThree();" required/>
-        <label for='no'>No</label>
-        <br/>
-        <br/>
-
+      <div id="locationQuestionsMandatory" style="display: none">
+        This Field Is Mandatory
       </div>
 
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="gym"
+        name="location"
+        required
+      />
+      <label for="gym">Gym</label>
+      <br />
 
-      <div id ="fullyVaxxedDiv" style="display:none">
-        <p id = "fullyVaccinatedParagraph">Are you fully vaccinated? <span class='red'>*</span></p>
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="theatre"
+        name="location"
+      />
+      <label for="Theatre">Theatre</label>
+      <br />
 
-        <input style="cursor:pointer" type='radio' id='yes' value = "yes" name='fullyVaccinated' value="yes" onclick="showQuestionsThree();"/>
-        <label for='yes'>Yes</label>
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="multipurposeRoomOrCafeteria"
+        name="location"
+      />
+      <label for="multipurposeRoom/Cafeteria"
+        >Multipurpose Room /Cafeteria</label
+      >
+      <br />
 
+      <input
+        style="cursor: pointer"
+        type="radio"
+        id="otherLocation"
+        name="location"
+      />
+      <label for="otherLocation">
+        Other &#40;please describe&#41;
+        <input
+          style="cursor: pointer"
+          type="text"
+          id="otherInputLocation"
+          placeholder="Describe Other Location"
+          onClick="selectOther('otherLocation');"
+        />
+      </label>
+      <br />
+      <br />
 
-        <input style="cursor:pointer" type='radio' id='no' name='fullyVaccinated' value ="no" value="no"  onclick="pleaseGoHome('goHome2');"   required  />
-        <label for='no'>No</label>
-        <br/>
-        <br/>
+      <p>Enter your first and last name: <span class="red">*</span></p>
+      <div id="nameQuestionMandatory" style="display: none">
+        Please enter your first and last name
       </div>
+      <label for="fLname">First and Last Name</label>
+      <input
+        type="text"
+        placeholder="First and Last Name"
+        required
+        id="fLname"
+      />
+      <br />
+      <br />
 
-
-
-
-      <div id ="closeContactDiv" style="display:none">
-        <p id = "closeContactParagraph">Have you been notified by public health that you are a close contact of a person confirmed to have COVID-19? <span class='red'>*</span></p>
-
-
-        <input style="cursor:pointer" type='radio' id='yes' name='closeContact' value="yes"   onclick="pleaseGoHome('goHome3');" required />
-        <label for='yes'>Yes</label>
-
-        <input style="cursor:pointer" type='radio' id='no' name='closeContact' value="no"    onclick="showQuestionsFour();" required />
-        <label for='no'>No</label>
-        <br/>
-        <br/>
+      <p>
+        Enter your phone number (no spaces or dashes neccesary):
+        <span class="red">*</span>
+      </p>
+      <div id="phoneQuestionMandatory" style="display: none">
+        Please enter a valid phone number
       </div>
+      <label for="phoneNumberCheck">Phone Number:</label>
+      <input
+        type="text"
+        placeholder="Ex. 7781231234"
+        required
+        id="phoneNumberCheck"
+      />
+      <br />
+      <br />
 
-
-
-
-      <div id="healthCheckDiv" style="display:none">
-        <p id = "healthCheckParagraph">Please confirm you have completed the Daily Health Check <span class='red'>*</span></p>
-
-        <input style="cursor:pointer" type='radio' id='yes' name='healthCheck' value="yes" onclick="showQuestionsFive();"  required/>
-        <label for='yes'>Yes</label>
-
-        <input style="cursor:pointer" type='radio' id='no' name='healthCheck' value="no" onclick="pleaseGoHome('goHome4');" required/>
-        <label for='no'>No</label>
-        </a>
-        <br/>
-        <br/>
+      <p>Enter your email address <span class="red">*</span></p>
+      <div id="emailQuestionMandatory" style="display: none">
+        Please enter a valid email
       </div>
+      <label for="emailCheck">Email Address:</label>
+      <input
+        type="email"
+        placeholder="Ex. email@gmail.com"
+        required
+        id="emailCheck"
+      />
+      <br />
+      <br />
+      <br />
 
-
-
-
-      <div id="miscQuestionsDiv" style="display:none">
-        <p id = "visitParagraph">Choose one of the following that describes your visit: <span class='red'>*</span></p>
-
-        <div id ="miscQuestionsMandatory" style="display:none"> This Field Is Mandatory </div>
-
-        <input style="cursor:pointer" value = "athleticEvent" type='radio' id='athletic' name='visit' required />
-        <label for='athletic'>Athletic Event (all players/coaches/officials/spectators)</label>
-        <br/>
-
-        <input style="cursor:pointer" type='radio' value = "musicDrama" id='musicDrama' name='visit' required />
-        <label for='musicDrama'>Musical/Drama Performance (all performers/participants/audience)</label>
-        <br>
-
-        <input style="cursor:pointer" type='radio'value = "schoolMeeting" id='school' name='visit' required />
-        <label for='school'>School Meeting (e.g. parent evening, meeting, presentation, etc.)</label>
-        <br>
-
-        <input style="cursor:pointer" type='radio' id='otherVisit' name='visit' value='other' required />
-
-        <label for='otherVisit'>
-          Other (please describe)
-          <input type="text" id='otherInputVisit' placeholder="Describe Your Visit" onClick="selectOther('otherVisit');"/>
-        </label>
-        <br/>
-        <br/>
-
-
-
-
-
-        <p id = "locationParagraph">Enter the location: <span class='red'>*</span></p>
-
-        <div id ="locationQuestionsMandatory" style="display:none"> This Field Is Mandatory </div>
-
-
-        <input style="cursor:pointer" type='radio' id='gym' name='location' required />
-        <label for='gym'>Gym</label>
-        <br/>
-
-        <input style="cursor:pointer" type='radio' id='theatre' name='location' />
-        <label for='Theatre'>Theatre</label>
-        <br/>
-
-        <input style="cursor:pointer" type='radio' id='multipurposeRoomOrCafeteria' name='location' />
-        <label for='multipurposeRoom/Cafeteria'>Multipurpose Room /Cafeteria</label>
-        <br/>
-
-        <input style="cursor:pointer" type='radio' id='otherLocation' name='location' />
-        <label for='otherLocation'>
-          Other &#40;please describe&#41;
-          <input style="cursor:pointer" type="text" id='otherInputLocation' placeholder="Describe Other Location" onClick="selectOther('otherLocation');"/>
-        </label>
-        <br/>
-        <br/>
-
-
-        <p>Enter your first and last name: <span class='red'>*</span></p><div id ="nameQuestionMandatory" style="display:none"> Please enter your first and last name </div>
-        <label for='fLname'>First and Last Name</label>
-        <input type="text" placeholder="First and Last Name" required id = "fLname" />
-        <br/>
-        <br/>
-
-        <p>Enter your phone number (no spaces or dashes neccesary): <span class='red'>*</span></p> <div id ="phoneQuestionMandatory" style="display:none"> Please enter a valid phone number </div>
-        <label for='phoneNumberCheck'>Phone Number:</label>
-        <input type="text" placeholder="Ex. 7781231234" required id= "phoneNumberCheck" />
-        <br/>
-        <br/>
-
-        <p>Enter your email address <span class='red'>*</span></p><div id ="emailQuestionMandatory" style="display:none"> Please enter a valid email </div>
-        <label for='emailCheck'>Email Address:</label>
-        <input type="email" placeholder="Ex. email@gmail.com" required id="emailCheck" />
-        <br/>
-        <br/>
-        <br/>
-
-
-
-        <div class="container">
-          <button id="finalInput" type= "button"   onclick= "checkEverything();" style="width:100px;
-            font-size:20px; cursor:pointer">Submit Form
-          </button>
-        </div>
-
+      <div class="container">
+        <button
+          id="finalInput"
+          type="button"
+          onclick="checkEverything();"
+          style="width: 100px; font-size: 20px; cursor: pointer"
+        >
+          Submit Form
+        </button>
       </div>
-      <br/>
-      <br/>
+    </div>
+    <br />
+    <br />
+  </form>
+  <br />
 
+  <!--Go home messages-->
+  <div style="display: none" id="goHome1">
+    <h1 id="Q2a">
+      Please return to your home and contact a health care provider.
+    </h1>
+  </div>
 
-    </form>
-    <br/>
+  <div style="display: none" id="goHome2">
+    <h1 id="Q2b">
+      If you are not fully vaccinated, please return to your home. Students,
+      staff and other adults who are not fully vaccinated and have travelled
+      outside Canada cannot attend school for 14 days after.
+    </h1>
+  </div>
 
+  <div style="display: none" id="goHome3">
+    <h1 id="Q2c">Follow the instructions provided by Public Health.</h1>
+  </div>
 
-
-    <!--Go home messages-->
-    <div style="display:none" id='goHome1'><h1 id="Q2a">Please return to your home and contact a health care provider.
-      </h1></div>
-
-    <div style="display:none" id='goHome2'><h1 id="Q2b">If you are not fully vaccinated, please return to your home. Students, staff and other adults who are not fully vaccinated and have travelled outside Canada cannot attend school for 14 days after.</h1></div>
-
-    <div style="display:none" id='goHome3'><h1 id="Q2c">Follow the instructions provided by Public Health.</h1></div>
-
-    <div style="display:none" id='goHome4'><h1 id="Q2d">Do not proceed into the school.</h1></div>
-
-
-  </body>
-
-</html>
+  <div style="display: none" id="goHome4">
+    <h1 id="Q2d">Do not proceed into the school.</h1>
+  </div>
+</body>
